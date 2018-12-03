@@ -7,6 +7,10 @@
     <title>Buy and Sell</title>
 </head>
 <body>
-    
+    <?php
+        include('./html/header.php');
+        include('./html/aside.php');
+        include('./html/footer.php');
+    ?>
 </body>
 </html>
