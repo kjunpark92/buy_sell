@@ -1,0 +1,46 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+/* --------------------------------------
+            Header/ Nav bar 
+-------------------------------------- */
+#navbar {
+    margin-top: 15px;
+    background-color: lightslategray;
+    width: 100%;
+}
+
+#navbar div {
+    background-color: coral;
+    width: 12%;
+    height: 60px;
+    display: inline-block;
+    flex-direction: row;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 80px;
+}
+
+#navbar div:hover {
+    background-color: cornflowerblue;
+}
+
+#top_login {
+    width: 6%;
+}
+#top_register {
+    width: 6%;
+}
+
+/* --------------------------------------
+            POST/EDIT 
+-------------------------------------- */
+
+#post_edit_form_wrapper {
+    margin-top: 50px;
+    margin-left:70px;
+}
+#post_edit_form div{
+    margin-top: 10px;
+}
