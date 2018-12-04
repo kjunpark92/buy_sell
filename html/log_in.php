@@ -42,15 +42,11 @@ if(!empty($_POST['username']) AND !empty($_POST['password'])){
 <script>
     var submit = document.querySelector('input[type="submit"]');
     var error_message = document.querySelector('#error_message');
-    console.log(submit);
     submit.addEventListener('click',function(e){
         error_message.innerHTML = "";
         var username = document.querySelector('#username');
         var password = document.querySelector('#password');
-        console.log(submit);
-        console.log(username);
         if(username.value == "" || password.value == ""){
-            console.log("test");
             error_message.innerHTML = "Enter a user name and password";
             e.preventDefault();
         }

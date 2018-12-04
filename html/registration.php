@@ -39,6 +39,7 @@ include('header.php');
             <span class="red_star">*</span>Password : <input type="password" name="password" id="password"><br>
             <input type="submit" value="Register"><button id="save">Save</button>
         </form>
+        <div id="error_message"></div>
     </div>
 <?php
 include('footer.php');
@@ -75,10 +76,25 @@ include('db.php');
         ));
         header ('location: log_in.php');
     }
-    else {
-        echo "Please fill out all the fields with * next to it";
-    }
 ?>
-<!-- <script src="../js/script.js"></script> -->
+<script>
+    var submit = document.querySelector('input[type="submit"]');
+    var error_message = document.querySelector('#error_message');
+    submit.addEventListener('click',function(e){
+        error_message.innerHTML = "";
+        var username = document.querySelector('#username');
+        var password = document.querySelector('#password');
+        if(username.value == "" && password.value == ""){
+            error_message.innerHTML = "Enter a user name and password";
+            e.preventDefault();
+        }
+        else 
+            if(username.value == "" || password.value == ""){
+            error_message.innerHTML = "Please fill out all the fields with * next to it";
+            e.preventDefault();
+            
+        }
+    });
+</script>
 </body>
 </html>
