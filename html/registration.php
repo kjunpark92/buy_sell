@@ -1,35 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration</title>
-</head>
-<body>
+<link rel="stylesheet" href="../style/style.css">
+
+<?php
+    include('./header.php');
+    include('./db.php');
+?>
     <div>
-        <form action="registration.php" method="POST">
-            Username : <input type="text" name="username" id="username"><br>
-            Gender : <input type="radio" name="gender" id="male" value="m">Male<input type="radio" name="gender" id="female" value="f">Female<br>
-            Phone : <input type="text" name="phone" id="phone" maxlength="11"><br>
-            Email : <input type="text" name="email" id="email"><br>
-            Address : <input type="text" name="address" id="address"><br>
-            District : <br>
-            Town :<br>
-            Password : <input type="password" name="password" id="password"><br>
+        <form action="registration.php" method="POST" id="registration">
+            <label for="username">Username : </label> 
+            <input type="text" name="username" id="username"><br>
+            <label for="password"> Password : </label>
+            <input type="password" name="password" id="password"> <br>
+            <label for="male"> Gender :
+            <input type="radio" name="gender" id="male" value="m">Male </label>
+            <label for="female"> <input type="radio" name="gender" id="female" value="f">Female </label><br>
+            <label for="phone"> Phone : </label> 
+            <input type="phone" name="phone" id="phone" maxlength="11"> <br>
+            <label for="email"> Email : </label>
+            <input type="email" name="email" id="email"> <br>
+            <label for="address"> Address : </label>
+            <input type="text" name="address" id="address"><br>
+            <label for="district"> District : <?php include("./district_list.php")?> </label><br>
+            <label for="town"> Town : <?php include("./town_list.php")?></label> <br>
+            
             <input type="submit" value="Register"><button id="save">Save</button>
         </form>
     </div>
-<?php 
-    try
-{
-    $db = new PDO("mysql:host=localhost;dbname=buy_sell;charset=utf8",'root','root');
-}
-    catch (Exception $e)
-{
-    die('Error: '. $e->getMessage());
-}
-?>
+
+<script src="../js/script.js"> </script>
 <?php
 
 
@@ -44,7 +41,7 @@ if(isset($_POST['username']) AND isset($_POST['gender']) AND isset($_POST['phone
     if(!empty($username) AND !empty($gender) AND !empty($phone) AND !empty($email) AND !empty($address) AND !empty($password)){
         echo "test1";
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $req = $db -> prepare("INSERT INTO test1(Username, Gender, Phone, Email, Address, Password) VALUES (:Username, :Gender, :Phone, :Email, :Address, :Password)");
+        $req = $db -> prepare("INSERT INTO users(username, gender, phone, email, address, password) VALUES (:Username, :Gender, :Phone, :Email, :Address, :Password)");
         $req -> execute(array(
             'Username' => $username,
             'Gender' => $gender,

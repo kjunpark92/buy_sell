@@ -1,7 +1,7 @@
 <header>
     <div id="navbar">
         <div id="top_logo">
-            <a> logo <img src="" alt=""></a>
+            <a href="../index.php"> logo <img src="" alt="" ></a>
         </div>
         <div class="category">
             <span>Electronics</span>
