@@ -12,8 +12,9 @@ include('header.php');
 ?>
     <div>
         <form action="log_in.php" method="POST">
-            Username : <input type="text" name="username" id="username"><br>
-            Password : <input type="password" name="password" id="password"><br>
+            <label for='username'> Username : </label> <input type='text' name='username' id='username'> <br/><br/>
+            <label for='password'> Password : </label> <input type='password' name='password' id='password'> <br/><br/>
+            <label> Remember me : <input type= 'checkbox' name='remember' id='remember' checked ><br/><br/>
             <input type="submit" value="Log In">
         </form>
         <div id="error_message"></div>
@@ -26,12 +27,18 @@ include('db.php');
 if(!empty($_POST['username']) AND !empty($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $req = $db->prepare('SELECT Username, Password FROM users WHERE Username = :Username');
+    $req = $db->prepare('SELECT username, password FROM users WHERE username = :username');
     $req->execute(array(
-    'Username' => $username));
+    'username' => $username));
     $result = $req->fetch();
-    $isPasswordCorrect = password_verify($password, $result['Password']);
+    $isPasswordCorrect = password_verify($password, $result['password']);
     if($isPasswordCorrect){
+        $_SESSION['id'] = $result['id'];
+        $_SESSION['username'] = $username;
+        if (isset($_POST['remember'])){
+            setcookie("username",$username, time()+3600);
+            setcookie("id", $result['id'], time()+3600);
+        }
         header ('location: ../index.php');
     }
     else {

@@ -13,12 +13,18 @@ include('header.php');
 ?>
     <div>
         <form action="registration.php" method="POST">
-            <span class="red_star">*</span>Username : <input type="text" name="username" id="username"><br>
-            <span class="red_star">*</span>Gender : <input type="radio" name="gender" id="male" value="m">Male<input type="radio" name="gender" id="female" value="f">Female<br>
-            <span class="red_star">*</span>Phone : <input type="text" name="phone" id="phone" maxlength="11"><br>
-            <span class="red_star">*</span>Email : <input type="text" name="email" id="email"><br>
-            <span class="red_star">*</span>Address : <input type="text" name="address" id="address"><br>
-            <span class="red_star">*</span>District/Town : 
+            <span class="red_star">*</span><label for="username">Username : </label>
+            <input type="text" name="username" id="username"><br>
+            <span class="red_star">*</span><label for="male"> Gender :
+            <input type="radio" name="gender" id="male" value="m">Male </label>
+            <label for="female"> <input type="radio" name="gender" id="female" value="f">Female </label><br>
+            <span class="red_star">*</span><label for="phone"> Phone : </label> 
+            <input type="text" name="phone" id="phone" maxlength="11"><br>
+            <span class="red_star">*</span><label for="email"> Email : </label>
+            <input type="text" name="email" id="email"><br>
+            <span class="red_star">*</span><label for="address"> Address : </label>
+            <input type="text" name="address" id="address"><br>
+            <span class="red_star">*</span><label for="district_town"> District/Town : </label>
                 <select name="district_town" id="district_town">
                     <optgroup label="Gangnam">
                         <option value="gangnam-apgujeong">Apgujeong</option>
@@ -36,7 +42,8 @@ include('header.php');
                         <option value="mapo-sinsu">Sinsu</option>
                     </optgroup>
                 </select><br>
-            <span class="red_star">*</span>Password : <input type="password" name="password" id="password"><br>
+            <span class="red_star">*</span><label for="password"> Password : </label>
+            <input type="password" name="password" id="password"><br>
             <input type="submit" value="Register"><button id="save">Save</button>
         </form>
         <div id="error_message"></div>
@@ -61,7 +68,7 @@ include('db.php');
         $town = $explode_dt[1];
         $date_joined = date('Y/m/d');
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $req = $db -> prepare("INSERT INTO users(Username, Gender, Phone, Email, Address, District, Town, DateJoined, Password, Authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)");
+        $req = $db -> prepare("INSERT INTO users(username, gender, phone, email, address, district, town, dateJoined, password, authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)");
         $req -> execute(array(
             'Username' => $username,
             'Gender' => $gender,
