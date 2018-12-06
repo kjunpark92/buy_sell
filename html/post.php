@@ -1,5 +1,8 @@
+<link rel="stylesheet" href="../style/style.css">
+
 <?php 
-    include('./html/header.php');
+    include('./header.php');
+    include('./db.php');
 ?>
 
 <div id='post_edit_form_wrapper'>
