@@ -44,3 +44,11 @@
 #post_edit_form div{
     margin-top: 10px;
 }
+
+/* --------------------------------------
+            Registration
+-------------------------------------- */
+
+.red_star{
+    color: red;
+}
