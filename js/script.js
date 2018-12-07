@@ -1,14 +1,3 @@
-var save = document.querySelector('#save');
-save.addEventListener('click', function(e) {
-    if(e.target.value == "Register") {
-        document.location.href = '../html/profile.php';
-    } else {
-        document.location.href = '../html/login.php';
-    }
-    
-});
-
-
 // ----------------------------------
 //          town selection
 // ----------------------------------

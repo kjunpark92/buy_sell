@@ -12,13 +12,17 @@
     <?php 
     include('db.php');
     include('header.php');
+
+    // setting of the prefill form if the user is already logged in
     $username_edit = '';
     $gender_edit = '';
     $phone_edit = '';
     $email_edit = '';
     $address_edit = '';
     $submitValue = 'Register';
-    if(isset($_GET['id'])){
+    $query = "INSERT INTO users(username, gender, phone, email, address, district, town, dateJoined, password, authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)";
+
+    if(isset($_GET['id'])) {
         $user_id = $_GET['id'];
         $req = $db->prepare('SELECT * FROM users WHERE id = :user_id');
         $req -> execute(array( 'user_id' => $user_id ));
@@ -29,22 +33,22 @@
         $email_edit = $data['email'];
         $address_edit = $data['address'];
         $submitValue = 'Save';
-        $query = "UPDATE users(username, gender, phone, email, address, district, town, dateJoined, password, authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)";
     }
     ?>
     <div>
         <form action="registration.php" method="POST">
+            <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
             <span class="red_star">*</span><label for="username">Username : </label>
-            <input type="text" name="username" id="username" value="<?php echo $username_edit?>"><br>
+            <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>"><br>
             <span class="red_star">*</span><label for="male"> Gender :
             <input type="radio" name="gender" id="male" value="m">Male </label>
             <label for="female"> <input type="radio" name="gender" id="female" value="f">Female </label><br>
             <span class="red_star">*</span><label for="phone"> Phone : </label> 
-            <input type="text" name="phone" id="phone" maxlength="11" value="<?php echo $phone_edit?>"><br>
+            <input type="text" name="phone" id="phone" maxlength="11" value="<?php echo $phone_edit; ?>"><br>
             <span class="red_star">*</span><label for="email"> Email : </label>
-            <input type="text" name="email" id="email" value="<?php echo $email_edit?>"><br>
+            <input type="text" name="email" id="email" value="<?php echo $email_edit; ?>"><br>
             <span class="red_star">*</span><label for="address"> Address : </label>
-            <input type="text" name="address" id="address" value="<?php echo $address_edit?>"><br>
+            <input type="text" name="address" id="address" value="<?php echo $address_edit; ?>"><br>
             <span class="red_star">*</span><label for="district_town"> District/Town : </label>
                 <select name="district_town" id="district_town">
                     <optgroup label="Gangnam">
@@ -72,7 +76,8 @@
 <?php include('footer.php');?>
 
 <?php
-    if(!empty($_POST['username']) AND !empty($_POST['gender']) AND !empty($_POST['phone']) AND !empty($_POST['email']) AND !empty($_POST['address']) AND !empty($_POST['district_town']) AND !empty($_POST['password'])){
+    if(!empty($_POST['username']) AND !empty($_POST['gender']) AND !empty($_POST['phone']) AND !empty($_POST['email']) AND !empty($_POST['address']) AND !empty($_POST['district_town']) AND !empty($_POST['password']) AND !empty($_POST['user_id'])){
+        $user_id = $_POST['user_id'];
         $username = $_POST['username'];
         $gender = $_POST['gender'];
         $phone = $_POST['phone'];
@@ -85,11 +90,10 @@
         $town = $explode_dt[1];
         $date_joined = date('Y/m/d');
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        if(empty($query)){
-            $query = "INSERT INTO users(username, gender, phone, email, address, district, town, dateJoined, password, authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)";
+        if($user_id) {
+            $query = "UPDATE users SET username = '$username', gender = '$gender', phone = '$phone', email = '$email', address = '$address' WHERE id = $user_id";
+            $submitValue = 'Save';
         }
-
-
         $req = $db -> prepare($query);
         $req -> execute(array(
             'Username' => $username,
@@ -103,7 +107,7 @@
             'Password' => $pass_hache,
             'Authority' => 2
         ));
-        header ('location: log_in.php');
+        ($submitValue == 'Register') ? header ('location: log_in.php') : header ('location: profile.php');
     }
 ?>
 <script>
