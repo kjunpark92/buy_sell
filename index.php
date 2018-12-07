@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style/style.css">
     <title>Buy and Sell</title>
-    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <?php
