@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../style/style.css">
 <header>
     <div id="navbar">
         <div id="top_logo">

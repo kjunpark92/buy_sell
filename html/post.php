@@ -9,11 +9,63 @@ $img_edit = "";
 $desc_edit = "";
 $price_edit= "";
 $submit_value = "Post";
-
-
-// checking if this is editing existing post
+$newCat = '';
+$action = "post.php";
 if (isset($_GET['post_id'])){ 
     $post_id = $_GET['post_id'];
+    $submit_value = "Edit";
+    $action = "post.php?post_id=".$post_id;
+} else {
+    $user_id = "Jason Test"; // fill with the value in session of the logged user
+}
+// submit the values
+if (isset($_POST['post_title']) AND isset($_POST['item_description']) AND isset($_POST['post_price']) AND isset($_POST['district_town'])) {
+    
+    $newTitle= $_POST['post_title'];
+    $newDesc = $_POST['item_description'];
+    $newImg = $_POST['post_pic']; // to set when the image gonna be handled
+    $newPrice = $_POST['post_price'];
+    $district_town = $_POST['district_town'];
+    $explode_dt = explode('-',$district_town);
+    $district = $explode_dt[0];
+    $town = $explode_dt[1];
+    $newCat = '' ; //$_POST['post_category']; to set when the post gonna handle category
+    
+    if($submit_value=="Edit"){//problem
+        echo $submit_value;
+        $query_update =  "UPDATE posts SET title=:title, description=:description, price=:price, district=:district, town=:town, img=:img, category=:category WHERE id=".$post_id;
+
+        $req = $db->prepare($query_update);
+        $array_update = Array(
+            "title" => $newTitle,
+            "description" => $newDesc,
+            "price" => $newPrice,
+            "district" =>$district,
+            "town" => $town,
+            "img" => $newImg,
+            "category" => $newCat
+        );
+        $req->execute($array_update);
+    }
+    else {
+        $query_insert =  "INSERT INTO posts(title, description, price, district, town, img, category) VALUES(:title, :description, :price, :district, :town, :img, :category)";
+
+        $req = $db->prepare($query_insert);
+        $array = Array(
+            "title" => $newTitle,
+            "description" => $newDesc,
+            "price" => $newPrice,
+            "district" =>$district,
+            "town" => $town,
+            "img" => $newImg,
+            "category" => $newCat
+        );
+        $req->execute($array);
+        
+    }
+}
+    // checking if this is editing existing post
+if (isset($_GET['post_id'])){ 
     $query_select =  "SELECT * FROM posts WHERE id=".$post_id;
     $req = $db->query($query_select)->fetch();
     $title_edit = $req['title'];
@@ -21,18 +73,17 @@ if (isset($_GET['post_id'])){
     $desc_edit = $req['description'];
     $price_edit= $req['price'];
     $loc_edit = implode('-', array($req['district'],$req['town']));
-    $submit_value = "Edit";
    
 } else {
-    $user_id = ""; // fill with the value in session of the logged user
     $query_select =  "SELECT * FROM users WHERE id=".$user_id;
     $req = $db -> query($query_select);
-
     $loc_edit = implode('-', array($req['district'],$req['town'])) ;
 }
+    //header('location:profile.php');
+
 ?>
 <div id='post_edit_form_wrapper'>
-    <form action='' method='POST' id='post_edit_form'>
+    <form action='<?php echo $action;?>' method='POST' id='post_edit_form'>
         <div class='post_edit'>
             <span> Title </span><br/>
             <input type='text' name='post_title' placeholder="Title" value="<?php echo $title_edit;?>">
@@ -76,5 +127,11 @@ if (isset($_GET['post_id'])){
         </div>
     </form>
 </div>
+
+
+<?php
+    
+
+?>
 
 <!-- script to put selected within the informations from the database -->
