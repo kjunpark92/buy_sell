@@ -1,11 +1,13 @@
 // ----------------------------------
 //          town selection
 // ----------------------------------
+function townSelection (select) {
+    var myOptionToSelect = select.getAttribute("myOptionToSelect");
+    var options = select.options;
 
-var district = document.getElementById("district");
-var district_name = district.value; 
-
-console.log(district_name);
-console.log("hihi");
-
-function town_select ()
+    for(var index_option in options) {
+        if(select.options[index_option].value && options[index_option].value.trim() == myOptionToSelect.trim()) {
+            options[index_option].selected = true;
+        }
+    }
+}
