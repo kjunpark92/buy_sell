@@ -23,7 +23,7 @@ if (isset($_POST['post_title']) AND isset($_POST['item_description']) AND isset(
     
     $newTitle= $_POST['post_title'];
     $newDesc = $_POST['item_description'];
-    $newImg = $_POST['post_pic']; // to set when the image gonna be handled
+    $newImg = isset($_POST['post_pic']) ? $_POST['post_pic']:""; // to set when the image gonna be handled
     $newPrice = $_POST['post_price'];
     $district_town = $_POST['district_town'];
     $explode_dt = explode('-',$district_town);
