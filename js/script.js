@@ -1,22 +1,22 @@
-var save = document.querySelector('#save');
-save.addEventListener('click', function(e) {
-    if(e.target.value == "Register") {
-        document.location.href = '../html/profile.php';
-    } else {
-        document.location.href = '../html/login.php';
-    }
-    
-});
-
-
 // ----------------------------------
 //          town selection
 // ----------------------------------
 
-var district = document.getElementById("district");
-var district_name = district.value; 
+function townSelection (select) {
+    var myOptionToSelect = select.getAttribute("myOptionToSelect");
+    var options = select.options;
 
-console.log(district_name);
-console.log("hihi");
+    for(var index_option in options) {
+        if(select.options[index_option].value && options[index_option].value.trim() == myOptionToSelect.trim()) {
+            options[index_option].selected = true;
+        }
+    }
+}
 
-function town_select ()
+// ----------------------------------
+//          password confirm
+// ----------------------------------
+
+function checkPassword (e1, e2){
+    
+}
