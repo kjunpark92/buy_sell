@@ -45,6 +45,11 @@
     margin-top: 10px;
 }
 
+.error_msg {
+    display: none;
+    color: red;
+}
+
 /* --------------------------------------
             Registration
 -------------------------------------- */

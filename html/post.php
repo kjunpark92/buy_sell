@@ -29,10 +29,9 @@ if (isset($_POST['post_title']) AND isset($_POST['item_description']) AND isset(
     $explode_dt = explode('-',$district_town);
     $district = $explode_dt[0];
     $town = $explode_dt[1];
-    $newCat = '' ; //$_POST['post_category']; to set when the post gonna handle category
+    // $newCat = $_POST['post_category'];
     
-    if($submit_value=="Edit"){//problem
-        echo $submit_value;
+    if($submit_value=="Edit"){
         $query_update =  "UPDATE posts SET title=:title, description=:description, price=:price, district=:district, town=:town, img=:img, category=:category WHERE id=".$post_id;
 
         $req = $db->prepare($query_update);
@@ -75,34 +74,51 @@ if (isset($_GET['post_id'])){
     $loc_edit = implode('-', array($req['district'],$req['town']));
    
 } else {
-    $query_select =  "SELECT * FROM users WHERE id=".$user_id;
-    $req = $db -> query($query_select);
-    $loc_edit = implode('-', array($req['district'],$req['town'])) ;
+    $query_select = "SELECT * FROM users WHERE username='$user_id'";
+    $req = $db->query($query_select)->fetch();
+    $loc_edit = implode('-', array($req['district'],$req['town']));
 }
     //header('location:profile.php');
 
 ?>
 <div id='post_edit_form_wrapper'>
-    <form action='<?php echo $action;?>' method='POST' id='post_edit_form'>
+    <form action='<?php echo $action;?>' method='POST' id='post_edit_form' enctype="multipart/form-data">
         <div class='post_edit'>
-            <span> Title </span><br/>
-            <input type='text' name='post_title' placeholder="Title" value="<?php echo $title_edit;?>">
+            <span> Title </span>
+            <span class='error_msg'> * this field is required. </span><br/>
+            <input type='text' name='post_title'  placeholder="Title" value="<?php echo $title_edit;?>">
         </div>
         <div class='post_edit'>
             <span> Upload a picture </span><br/>
             <input type='file' name='post_pic' accept='image/*' src="<?php echo $img_edit;?>">
         </div>
         <div class='post_edit'>
-            <span> Item Description </span><br/>
+            <span> Select a Category </span>
+            <span class='error_msg'> * this field is required.</span><br/>
+            <select name="post_category" id="post_category">
+                <option selected disabled> Select a Category </option>
+                <option value="cars"> - Cars - </option>
+                <option value="electronics"> - Electronics - </option>
+                <option value="clothing"> - Clothing - </option>
+                <option value="cosmetics"> - Cosmetics - </option>
+                <option value="misc"> - Miscellaneous - </option>
+            </select>
+        </div>
+
+        <div class='post_edit'>
+            <span> Item Description </span>
+            <span class='error_msg'> * this field is required.</span><br/>
             <textarea name='item_description' rows='20' cols='70' form='post_edit_form' placeholder="Description"><?php echo $desc_edit;?></textarea>
         </div>
         <div class='post_edit'>
             <span> Price </span>
             <input type='text' name='post_price' style='width: 100px;' placeholder="Number only" value="<?php echo $price_edit;?>"/>
+            <span class='error_msg'>
+            * this field is required.</span>
         </div>
         <div class='post_edit'>
             <span> Your Location </span>
-            <select name="district_town" id="district_town">    
+            <select name="district_town" id="district_town" myOptionToSelect="<?php echo $loc_edit;?>">    
                     <option selected disabled> Please select your location </option>
                     <optgroup label="Gangnam">
                         <option value="gangnam-apgujeong">Apgujeong</option>
@@ -120,15 +136,20 @@ if (isset($_GET['post_id'])){
                         <option value="mapo-sinsu">Sinsu</option>
                     </optgroup>
                 </select>
+                <span class='error_msg'>* this field is required.</span>
             <br/><br/>
         </div>
         <div class='post_edit'>
-            <input type='submit' name='post_submit' value ="<?php echo $submit_value;?>">
+            <input type='submit' name='post_submit' 
+            id='post_submit' value ="<?php echo $submit_value;?>">
         </div>
     </form>
 </div>
 
-
+<script src="../js/script.js"> </script>
+<script> var district_town = document.getElementById("district_town");
+        townSelection(district_town);
+</script>
 <?php
     
 

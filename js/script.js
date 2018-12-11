@@ -1,17 +1,38 @@
-var save = document.querySelector('#save');
-save.addEventListener('click', function() {
-    document.location.href = '../html/.php';
-});
-
-
 // ----------------------------------
 //          town selection
 // ----------------------------------
+function townSelection (select) {
+    var myOptionToSelect = select.getAttribute("myOptionToSelect");
+    var options = select.options;
 
-var district = document.getElementById("district");
-var district_name = district.value; 
+    for(var index_option in options) {
+        if(select.options[index_option].value && options[index_option].value.trim() == myOptionToSelect.trim()) {
+            options[index_option].selected = true;
+        }
+    }
+}
 
-console.log(district_name);
-console.log("hihi");
+// ----------------------------------
+//          display error message
+// ----------------------------------
 
-function town_select ()
+var post_edit_form = document.getElementById("post_edit_form");
+
+
+post_edit_form.addEventListener('submit', function(e){
+    var requiredField = post_edit_form.querySelectorAll("input[type=text], select, textarea");
+
+    var fieldLength = requiredField.length;
+
+    console.log(fieldLength);
+
+    for (var i=0; i<fieldLength; i++){
+        var fieldvalue= requiredField[i].value;
+        var valuelength= fieldvalue.length;
+        var error_msg= document.querySelector(".error_msg");
+        if (valuelength<3){
+            error_msg.style.display ="inline-block";
+        }
+    }
+
+});
