@@ -1,6 +1,7 @@
 // ----------------------------------
 //          town selection
 // ----------------------------------
+
 function townSelection (select) {
     var myOptionToSelect = select.getAttribute("myOptionToSelect");
     var options = select.options;
@@ -10,4 +11,12 @@ function townSelection (select) {
             options[index_option].selected = true;
         }
     }
+}
+
+// ----------------------------------
+//          password confirm
+// ----------------------------------
+
+function checkPassword (e1, e2){
+    
 }

@@ -27,6 +27,7 @@
     $edit = '';
     $submitValue = 'Register';
     $action = "registration.php";
+    $confirmation = "Passsword Confirmation";
 
     if(isset($_GET['id'])) {
         $user_id = $_GET['id'];
@@ -41,7 +42,6 @@
         $submitValue = 'Save';
         $district_town = implode('-', Array($data['district'], $data['town']));
         $action = "registration.php?id=".$user_id;
-
     }
 
 
@@ -51,7 +51,6 @@
     *****************************
     */
     if(!empty($_POST['username']) AND !empty($_POST['gender']) AND !empty($_POST['phone']) AND !empty($_POST['email']) AND !empty($_POST['address']) AND !empty($_POST['district_town']) AND !empty($_POST['password']) AND !empty($_POST['user_id'])){
-        // $user_id = $_POST['user_id'];
         $username = $_POST['username'];
         $gender = $_POST['gender'];
         $phone = $_POST['phone'];
@@ -64,10 +63,13 @@
         $town = $explode_dt[1];
         $date_joined = date('Y/m/d');
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $confirmation = "Passsword Confirmation";
 
-        if($user_id) { // we are in the edit situation
+        if($user_id) { 
+            // we are in the edit situation
             $query = "UPDATE users SET username = '$username', gender = '$gender', phone = '$phone', email = '$email', address = '$address' WHERE id = $user_id";
             $submitValue = 'Save';
+            $confirmation = "New Password Confirmation";
         } else {
             // By default the query is an insert
             $query = "INSERT INTO users(username, gender, phone, email, address, district, town, dateJoined, password, authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)";
@@ -129,6 +131,8 @@
                 </select><br>
             <span class="red_star">*</span><label for="password"> Password : </label>
             <input type="password" name="password" id="password"><br>
+            <span class="red_star">*</span><label for="confirmation"><?php echo $confirmation; ?> :</label>
+            <input type="password" id="confirmation" name="confirmation"><br>
             <input id="save" type="submit" value="<?php echo $submitValue; ?>">
         </form>
         <div id="error_message"></div>
@@ -136,28 +140,35 @@
 <?php include('footer.php');?>
 <script src="../js/script.js"></script>
 <script>
-    // Management of the check of the form
+    // Disiplay errors on the check of the form
     var submit = document.querySelector('input[type="submit"]');
     var error_message = document.querySelector('#error_message');
     submit.addEventListener('click',function(e){
         error_message.innerHTML = "";
         var username = document.querySelector('#username');
+        var phone = document.querySelector('#phone');
+        var email = document.querySelector('#email');
+        var address = document.querySelector('#address');
         var password = document.querySelector('#password');
-        if(username.value == "" && password.value == ""){
-            error_message.innerHTML = "Enter a user name and password";
-            e.preventDefault();
-        }
-        else 
-            if(username.value == "" || password.value == ""){
+        var confirmation = document.querySelector("#confirmation");
+        if(username.value == "" || password.value == "" || phone.value == "" || email.value == "" || address.value == ""){
             error_message.innerHTML = "Please fill out all the fields with * next to it";
             e.preventDefault();
-            
+            }
+        else if ((password.value || confirmation.value) && (password.value != confirmation.value)) {
+            error_message.innerHTML = 'Has to be identical to the first password';
+            e.preventDefault();
         }
     });
 
     // treatment of the selection of the district town selection for edition
     var select = document.getElementById("district_town");
     townSelection(select);
+
+    //comfirm password
+    var password = document.querySelector('#password');
+    var confirmation = document.querySelector("#confirmation");
+    checkPassword(password,confirmation);
 </script>
 </body>
 </html>
