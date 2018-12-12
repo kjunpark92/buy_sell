@@ -1,62 +1,3 @@
-// ----------------------------------
-//          display error message
-// ----------------------------------
-
-// var post_edit_form = document.getElementById("post_edit_form");
-
-// var requiredField = post_edit_form.querySelectorAll("select");
-
-//     console.log(requiredField);
-
-// post_edit_form.addEventListener('submit', function(e){
-    
-//     console.log(e);
-//     var fieldLength = requiredField.length;
-
-//     console.log(fieldLength);
-
-//     for (var i=0; i<fieldLength; i++){
-//         var fieldvalue= requiredField[i].value;
-//         var valuelength= fieldvalue.length;
-//         var error_msg= document.requiredField[i].querySelector(".error_msg");
-//         if (valuelength<3){
-//             error_msg.style.display ="inline-block";
-//             e.preventDefault();
-//         }
-        
-//     }
-
-// });
-
-
-
-
-var submit_button = document.getElementById("post_submit");
-
-submit_button.addEventListener("click", function(e){
-    
-    var theForm= document.getElementById("post_edit_form");
-    var requiredField = document.getElementsByClassName("post_edit required");
-
-    var fieldLength = requiredField.length;
-
-    for (var i=0; i<fieldLength; i++){
-
-        var needToBeFilled= requiredField[i].lastElementChild;
-        console.log(needToBeFilled);
-        var fieldvalue= needToBeFilled.value;
-        console.log(fieldvalue);
-        var valuelength= fieldvalue.length;
-        var error_msg=requiredField[i].firstElementChild;
-
-        if (valuelength<3){
-            error_msg.style.display ="inline-block";
-            e.preventDefault();
-        }
-        
-    }
-});
-})
 
 // ----------------------------------
 //          town selection
@@ -73,6 +14,48 @@ function townSelection (select) {
     }
 }
 
+
+// ----------------------------------
+//          display error message
+// ----------------------------------
+
+
+var submit_button = document.getElementById("post_submit");
+
+submit_button.addEventListener("click", function(e){
+    
+    var requiredField = document.getElementsByClassName("required");
+
+    var fieldLength = requiredField.length;
+
+    for (var i=0; i<fieldLength; i++){
+
+        var needToBeFilled= requiredField[i].querySelector(".requiredField");
+        var fieldvalue= needToBeFilled.value;
+        var valuelength= fieldvalue.length;
+        var error_msg=requiredField[i].querySelector('.error_msg');
+
+        var category= document.getElementById("post_category");
+        var cat_value= category.value;
+
+        var price= document.getElementById("post_price");
+        var price_value= price.value;
+
+        if (valuelength<1){
+            error_msg.style.display ="inline-block";
+            e.preventDefault();
+        }
+        else if (category.value=="Select a Category"){
+            error_msg.style.display="inline-block";
+            e.preventDefault();
+        }
+        else if (price_value == isNaN){
+            error_msg.style.display="inline-block";
+            e.preventDefault();
+        }     
+    }
+});
+
 // ----------------------------------
 //          password confirm
 // ----------------------------------
@@ -80,3 +63,4 @@ function townSelection (select) {
 function checkPassword (e1, e2){
     
 }
+

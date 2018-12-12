@@ -84,18 +84,15 @@ if (isset($_GET['post_id'])){
 <div id='post_edit_form_wrapper'>
     <form action='<?php echo $action;?>' method='POST' id='post_edit_form' enctype="multipart/form-data">
         <div class='post_edit required'>
+            <span> Title </span> 
             <span class='error_msg'> * this field is required. </span><br/>
-            <span> Title </span> <br/>
-            <input type='text' name='post_title'  placeholder="Title" value="<?php echo $title_edit;?>">
+            <input type='text' name='post_title' class='requiredField'  placeholder="Title" value="<?php echo $title_edit;?>">
         </div>
-        <div class='post_edit'>
-            <span> Upload a picture </span><br/>
-            <input type='file' name='post_pic' accept='image/*' src="<?php echo $img_edit;?>">
-        </div>
-        <div class='post_edit'>
-            <span class='error_msg'> * this field is required.</span>
+        
+        <div class='post_edit required'>
             <span> Select a Category </span>
-            <select name="post_category" id="post_category">
+            <span class='error_msg'> * this field is required.</span> <br/>
+            <select name="post_category" id="post_category" class='requiredField'>
                 <option selected disabled> Select a Category </option>
                 <option value="cars"> - Cars - </option>
                 <option value="electronics"> - Electronics - </option>
@@ -103,23 +100,22 @@ if (isset($_GET['post_id'])){
                 <option value="cosmetics"> - Cosmetics - </option>
                 <option value="misc"> - Miscellaneous - </option>
             </select>
+            
         </div>
-
         <div class='post_edit required'>
-            <span class='error_msg'> * this field is required.</span><br/>
             <span> Item Description </span>
-            <textarea name='item_description' rows='20' cols='70' form='post_edit_form' placeholder="Description"><?php echo $desc_edit;?></textarea><br/>
+            <span class='error_msg'> * this field is required.</span><br/>
+            <textarea name='item_description' rows='20' cols='70' form='post_edit_form' class='requiredField' placeholder=" Description"><?php echo $desc_edit;?></textarea>
         </div>
         <div class='post_edit required'>
+            <span> Price </span>
+            <input type='text' name='post_price' id='post_price' class='requiredField' style='width: 100px;' placeholder=" number only" value="<?php echo $price_edit;?>"/>
             <span class='error_msg'>
             * this field is required.</span>
-            <span> Price </span>
-            <input type='text' name='post_price' style='width: 100px;' placeholder="Number only" value="<?php echo $price_edit;?>"/>
         </div>
         <div class='post_edit required'>
-            <span class='error_msg'>* this field is required.</span>
             <span> Your Location </span>
-            <select name="district_town" id="district_town" myOptionToSelect="<?php echo $loc_edit;?>">    
+            <select name="district_town" id="district_town" class='requiredField' myOptionToSelect="<?php echo $loc_edit;?>">    
                 <option selected disabled> Please select your location </option>
                 <optgroup label="Gangnam">
                     <option value="gangnam-apgujeong">Apgujeong</option>
@@ -136,15 +132,19 @@ if (isset($_GET['post_id'])){
                     <option value="mapo-hapjeong">Hapjeong</option>
                     <option value="mapo-sinsu">Sinsu</option>
                 </optgroup>
-                
             </select>
-                
-            <br/><br/>
+            <span class='error_msg'>* this field is required.</span>
         </div>
+        <div class='post_edit'>
+            <span> Upload a picture </span><br/>
+            <input type='file' name='post_pic' accept='image/*' src="<?php echo $img_edit;?>">
+        </div>
+        <br/><br/>
         <div class='post_edit'>
             <input type='submit' name='post_submit' 
             id='post_submit' value ="<?php echo $submit_value;?>">
         </div>
+        <br/><br/>
     </form>
 </div>
 

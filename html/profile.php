@@ -27,7 +27,6 @@
     <ul id="postlist">
     <?php 
         
-
         foreach ($data as $posted) {
             $post_id=$posted['post_id'];
             echo "<li>".$posted['title']."...".$posted['datePosted']."<a href='./post.php?post_id=".$post_id."'>....EDIT... </a></li>";
