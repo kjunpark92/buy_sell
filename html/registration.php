@@ -102,9 +102,9 @@
             <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
             <span class="red_star">*</span><label for="username">Username : </label>
             <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>"><br>
-            <span class="red_star">*</span><label for="male"> Gender :
-            <input type="radio" name="gender" id="male" value="m">Male </label>
-            <label for="female"> <input type="radio" name="gender" id="female" value="f">Female </label><br>
+            <span class="red_star">*</span> Gender :
+            <label for="male"> <input type="radio" name="gender" id="male" value="m" <?php echo ($gender_edit == 'm') ? 'checked="checked"' : ''; ?> >Male </label>
+            <label for="female"> <input type="radio" name="gender" id="female" value="f" <?php echo ($gender_edit == 'f') ? 'checked="checked"' : ''; ?> >Female </label><br>
             <span class="red_star">*</span><label for="phone"> Phone : </label> 
             <input type="text" name="phone" id="phone" maxlength="11" value="<?php echo $phone_edit; ?>"><br>
             <span class="red_star">*</span><label for="email"> Email : </label>
@@ -155,7 +155,7 @@
             error_message.innerHTML = "Please fill out all the fields with * next to it";
             e.preventDefault();
             }
-        else if ((password.value || confirmation.value) && (password.value != confirmation.value)) {
+        if ((password.value || confirmation.value) && (password.value != confirmation.value)) {
             error_message.innerHTML = 'Has to be identical to the first password';
             e.preventDefault();
         }
