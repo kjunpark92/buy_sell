@@ -50,7 +50,6 @@ var submit_button = document.getElementById("post_submit");
 submit_button.addEventListener("click", function(e){
     
     var theForm= document.getElementById("post_edit_form");
-    var fieldLength = requiredField.length;
     var requiredField = document.getElementsByClassName("post_edit required");
 
     var fieldLength = requiredField.length;
