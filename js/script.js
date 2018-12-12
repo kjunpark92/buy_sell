@@ -1,7 +1,16 @@
 
-// ----------------------------------
-//          town selection
-// ----------------------------------
+// --------------------------------------------
+//          password confirm in registration
+// --------------------------------------------
+
+function checkPassword (e1, e2){
+    
+}
+
+
+// --------------------------------------------
+//             town selection in registration
+// --------------------------------------------
 
 function townSelection (select) {
     var myOptionToSelect = select.getAttribute("myOptionToSelect");
@@ -15,9 +24,9 @@ function townSelection (select) {
 }
 
 
-// ----------------------------------
-//          display error message
-// ----------------------------------
+// --------------------------------------------
+//     display error message in post.php
+// --------------------------------------------
 
 
 var submit_button = document.getElementById("post_submit");
@@ -55,12 +64,3 @@ submit_button.addEventListener("click", function(e){
         }     
     }
 });
-
-// ----------------------------------
-//          password confirm
-// ----------------------------------
-
-function checkPassword (e1, e2){
-    
-}
-
