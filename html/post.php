@@ -83,9 +83,9 @@ if (isset($_GET['post_id'])){
 ?>
 <div id='post_edit_form_wrapper'>
     <form action='<?php echo $action;?>' method='POST' id='post_edit_form' enctype="multipart/form-data">
-        <div class='post_edit'>
-            <span> Title </span>
+        <div class='post_edit required'>
             <span class='error_msg'> * this field is required. </span><br/>
+            <span> Title </span> <br/>
             <input type='text' name='post_title'  placeholder="Title" value="<?php echo $title_edit;?>">
         </div>
         <div class='post_edit'>
@@ -93,8 +93,8 @@ if (isset($_GET['post_id'])){
             <input type='file' name='post_pic' accept='image/*' src="<?php echo $img_edit;?>">
         </div>
         <div class='post_edit'>
+            <span class='error_msg'> * this field is required.</span>
             <span> Select a Category </span>
-            <span class='error_msg'> * this field is required.</span><br/>
             <select name="post_category" id="post_category">
                 <option selected disabled> Select a Category </option>
                 <option value="cars"> - Cars - </option>
@@ -105,38 +105,40 @@ if (isset($_GET['post_id'])){
             </select>
         </div>
 
-        <div class='post_edit'>
-            <span> Item Description </span>
+        <div class='post_edit required'>
             <span class='error_msg'> * this field is required.</span><br/>
-            <textarea name='item_description' rows='20' cols='70' form='post_edit_form' placeholder="Description"><?php echo $desc_edit;?></textarea>
+            <span> Item Description </span>
+            <textarea name='item_description' rows='20' cols='70' form='post_edit_form' placeholder="Description"><?php echo $desc_edit;?></textarea><br/>
         </div>
-        <div class='post_edit'>
-            <span> Price </span>
-            <input type='text' name='post_price' style='width: 100px;' placeholder="Number only" value="<?php echo $price_edit;?>"/>
+        <div class='post_edit required'>
             <span class='error_msg'>
             * this field is required.</span>
+            <span> Price </span>
+            <input type='text' name='post_price' style='width: 100px;' placeholder="Number only" value="<?php echo $price_edit;?>"/>
         </div>
-        <div class='post_edit'>
+        <div class='post_edit required'>
+            <span class='error_msg'>* this field is required.</span>
             <span> Your Location </span>
             <select name="district_town" id="district_town" myOptionToSelect="<?php echo $loc_edit;?>">    
-                    <option selected disabled> Please select your location </option>
-                    <optgroup label="Gangnam">
-                        <option value="gangnam-apgujeong">Apgujeong</option>
-                        <option value="gangnam-sinsa">Sinsa</option>
-                        <option value="gangnam-samseong">Samseong</option>
-                    </optgroup>
-                    <optgroup label="Yongsan">
-                        <option value="yongsan-itaewon">Itaewon</option>
-                        <option value="yongsan-yongmun">Yongmun</option>
-                        <option value="yongsan-seobinggo">Seobinggo</option>
-                    </optgroup>
-                    <optgroup label="Mapo">
-                        <option value="mapo-gongdeok">Gongdeok</option>
-                        <option value="mapo-hapjeong">Hapjeong</option>
-                        <option value="mapo-sinsu">Sinsu</option>
-                    </optgroup>
-                </select>
-                <span class='error_msg'>* this field is required.</span>
+                <option selected disabled> Please select your location </option>
+                <optgroup label="Gangnam">
+                    <option value="gangnam-apgujeong">Apgujeong</option>
+                    <option value="gangnam-sinsa">Sinsa</option>
+                    <option value="gangnam-samseong">Samseong</option>
+                </optgroup>
+                <optgroup label="Yongsan">
+                    <option value="yongsan-itaewon">Itaewon</option>
+                    <option value="yongsan-yongmun">Yongmun</option>
+                    <option value="yongsan-seobinggo">Seobinggo</option>
+                </optgroup>
+                <optgroup label="Mapo">
+                    <option value="mapo-gongdeok">Gongdeok</option>
+                    <option value="mapo-hapjeong">Hapjeong</option>
+                    <option value="mapo-sinsu">Sinsu</option>
+                </optgroup>
+                
+            </select>
+                
             <br/><br/>
         </div>
         <div class='post_edit'>

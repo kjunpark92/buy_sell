@@ -42,26 +42,32 @@ function townSelection (select) {
 
 // });
 
+
+
+
 var submit_button = document.getElementById("post_submit");
 
 submit_button.addEventListener("click", function(e){
     
     var theForm= document.getElementById("post_edit_form");
-    
-    var requiredField = theForm.querySelectorAll("select");
-        console.log(e.target);
+    var fieldLength = requiredField.length;
+    var requiredField = document.getElementsByClassName("post_edit required");
+
     var fieldLength = requiredField.length;
 
-    console.log(fieldLength);
-
     for (var i=0; i<fieldLength; i++){
-        var fieldvalue= requiredField[i].value;
+
+        var needToBeFilled= requiredField[i].lastElementChild;
+        console.log(needToBeFilled);
+        var fieldvalue= needToBeFilled.value;
+        console.log(fieldvalue);
         var valuelength= fieldvalue.length;
-        var error_msg= document.requiredField[i].querySelector(".error_msg");
+        var error_msg=requiredField[i].firstElementChild;
+
         if (valuelength<3){
             error_msg.style.display ="inline-block";
             e.preventDefault();
         }
         
     }
-})
+});
