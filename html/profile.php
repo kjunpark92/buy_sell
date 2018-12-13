@@ -4,9 +4,8 @@
     include('./header.php');
     include('./db.php');
 
-// if (!empty($_SESSION['username'])){
-    // $username = $_SESSION['username'];
-    $username = 'Jason Test';
+if (!empty($_SESSION['username'])){
+    $username = $_SESSION['username'];
     $req = $db -> prepare("SELECT * , p.id AS post_id from users u, posts p WHERE u.username=:username AND p.user_id= u.id ORDER BY p.datePosted DESC");
     $array = array("username" => $username);
     $req->execute($array);
@@ -37,8 +36,8 @@
 </div>
 
 <?php
-// }
-// else {
-//     header("location:./log_in.php");
-// }
+}
+else {
+    header("location:./log_in.php");
+}
 ?>

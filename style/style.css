@@ -57,3 +57,21 @@
 .red_star{
     color: red;
 }
+
+/* --------------------------------------
+            Category
+-------------------------------------- */
+
+/* #category{
+    width: 100%;
+    display: flex;
+}
+
+#category div{
+    width: 15%;
+    height: 15%;
+    display: inline-block;
+    flex-direction: row;
+    border: 1px solid black;
+    text-align: center;
+} */

@@ -34,7 +34,7 @@ include('footer.php');
         $result = $req->fetch();
         $isPasswordCorrect = password_verify($password, $result['password']);
         if($isPasswordCorrect){
-            $_SESSION['id'] = $result['id'];
+            $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $username;
             if (isset($_POST['remember'])){
                 setcookie("username",$username, time()+3600);

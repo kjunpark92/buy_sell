@@ -29,7 +29,7 @@ if (isset($_POST['post_title']) AND isset($_POST['item_description']) AND isset(
     $explode_dt = explode('-',$district_town);
     $district = $explode_dt[0];
     $town = $explode_dt[1];
-    // $newCat = $_POST['post_category'];
+    $newCat = $_POST['post_category'];
     
     if($submit_value=="Edit"){
         $query_update =  "UPDATE posts SET title=:title, description=:description, price=:price, district=:district, town=:town, img=:img, category=:category WHERE id=".$post_id;
