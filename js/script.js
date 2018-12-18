@@ -9,7 +9,7 @@ function checkPassword (e1, e2){
 
 
 // --------------------------------------------
-//             town selection in registration
+//         town selection in registration
 // --------------------------------------------
 
 function townSelection (select) {
@@ -64,3 +64,4 @@ submit_button.addEventListener("click", function(e){
         }     
     }
 });
+
