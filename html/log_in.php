@@ -30,19 +30,22 @@ include('footer.php');
     if(!empty($_POST['username']) AND !empty($_POST['password'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $req = $db->prepare('SELECT username, password FROM users WHERE username = :username');
+        $req = $db->prepare('SELECT id, username, password FROM users WHERE username = :username');
         $req->execute(array(
         'username' => $username));
         $result = $req->fetch();
         $isPasswordCorrect = password_verify($password, $result['password']);
         if($isPasswordCorrect){
-            $_SESSION['id'] = $result['id'];
+            $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $username;
+            echo $_SESSION['id']; echo $_SESSION['username'];
             if (isset($_POST['remember'])){
                 setcookie("username",$username, time()+3600);
                 setcookie("id", $result['id'], time()+3600);
             }
-            header ('location: ../index.php');
+            print_r($_COOKIE);
+            // header ('location: ../index.php');
+            // header ('location: ./itempage.php?post_id=10');
         }
         else {
             echo "Your user name or password is wrong!";
