@@ -1,4 +1,4 @@
-<?php session_start(); print_r($_REQUEST);?>
+<?php session_start();?>
 
 <link rel='stylesheet' href='../style/style.css'>
 
@@ -52,20 +52,20 @@ $dateComment= $data2['dateComment'];
     ?>
     </ul>
     <?php 
-    if(isset($_COOKIE['id']) AND isset($_COOKIE['user_id'])) {
+    if(isset($_SESSION['id']) AND isset($_SESSION['user_id'])) {
         echo '<form action="itempage.php?post_id='.$post_id.'" method="POST">
         <input type="text" name="comment" style=width:300px placeholder="leave your comment here"/>
         <input type="submit" name="submit" value="Enter">
         </form>';
 
-        $comment_text= $_POST['comment'];
-        $user_id= $_COOKIE['user_id']; //has to be changed to session['user_id']
-        $username= $_COOKIE['username'];//has to be changed to session['username']
+        $comment_text= "";
+        $user_id= $_SESSION['user_id']; //has to be changed to session['user_id']
+        $username= $_SESSION['username'];//has to be changed to session['username']
        
         echo $user_id; echo $username;
 
         if(!empty($comment_text)){
-            
+            $comment_text= $_POST['comment'];
             date_default_timezone_set('Asia/Seoul');
             $now = new DateTime();
             $now_format= date_format($now, 'Y-m-d H:i:s');

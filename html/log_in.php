@@ -38,14 +38,14 @@ include('footer.php');
         if($isPasswordCorrect){
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $username;
-            echo $_SESSION['id']; echo $_SESSION['username'];
+            echo $_SESSION['user_id']."<br/>"; echo $_SESSION['username'];
             if (isset($_POST['remember'])){
                 setcookie("username",$username, time()+3600);
                 setcookie("id", $result['id'], time()+3600);
             }
-            print_r($_COOKIE);
+            
             // header ('location: ../index.php');
-            // header ('location: ./itempage.php?post_id=10');
+            header ('location: ./itempage.php?post_id=10');
         }
         else {
             echo "Your user name or password is wrong!";
