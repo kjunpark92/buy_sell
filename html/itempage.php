@@ -1,7 +1,4 @@
-<?php
-    session_start();
-?>
-
+<?php session_start(); print_r($_REQUEST);?>
 
 <link rel='stylesheet' href='../style/style.css'>
 
@@ -55,16 +52,18 @@ $dateComment= $data2['dateComment'];
     ?>
     </ul>
     <?php 
-    // if(isset($_SESSION['id']) AND isset($_SESSION['user_id'])) {
+    if(isset($_COOKIE['id']) AND isset($_COOKIE['user_id'])) {
         echo '<form action="itempage.php?post_id='.$post_id.'" method="POST">
         <input type="text" name="comment" style=width:300px placeholder="leave your comment here"/>
         <input type="submit" name="submit" value="Enter">
         </form>';
 
         $comment_text= $_POST['comment'];
-        $user_id= 'Jason Test'; //has to be changed to session['user_id']
-        $username= $data2['username'];//has to be changed to session['username']
+        $user_id= $_COOKIE['user_id']; //has to be changed to session['user_id']
+        $username= $_COOKIE['username'];//has to be changed to session['username']
        
+        echo $user_id; echo $username;
+
         if(!empty($comment_text)){
             
             date_default_timezone_set('Asia/Seoul');
@@ -84,13 +83,13 @@ $dateComment= $data2['dateComment'];
         else {
             echo 'Please write something for a comment';
         }
-    // }  -- for if isset condition-- uncommnet this later
+    }  
+    //-- for if isset condition-- uncommnet this later
    
     ?>
 </div>
 
 <?php
-
 ?>
 
 
