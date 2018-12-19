@@ -28,7 +28,7 @@ include('footer.php');
     if(!empty($_POST['username']) AND !empty($_POST['password'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $req = $db->prepare('SELECT username, password FROM users WHERE username = :username');
+        $req = $db->prepare('SELECT id, username, password FROM users WHERE username = :username');
         $req->execute(array(
         'username' => $username));
         $result = $req->fetch();

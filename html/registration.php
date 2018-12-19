@@ -29,8 +29,8 @@
     $action = "registration.php";
     $confirmation = "Passsword Confirmation";
 
-    if(isset($_GET['id'])) {
-        $user_id = $_GET['id'];
+    if(isset($_SESSION['id'])) {
+        $user_id = $_SESSION['id'];
         $req = $db->prepare('SELECT * FROM users WHERE id = :user_id');
         $req -> execute(array( 'user_id' => $user_id ));
         $data = $req -> fetch();
@@ -42,8 +42,8 @@
         $submitValue = 'Save';
         $district_town = implode('-', Array($data['district'], $data['town']));
         $action = "registration.php?id=".$user_id;
+        $confirmation = "New Password Confirmation";
     }
-
 
     /*
     ******************************
@@ -63,13 +63,11 @@
         $town = $explode_dt[1];
         $date_joined = date('Y/m/d');
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $confirmation = "Passsword Confirmation";
-
         if($user_id) { 
             // we are in the edit situation
             $query = "UPDATE users SET username = '$username', gender = '$gender', phone = '$phone', email = '$email', address = '$address' WHERE id = $user_id";
             $submitValue = 'Save';
-            $confirmation = "New Password Confirmation";
+            
         } else {
             // By default the query is an insert
             $query = "INSERT INTO users(username, gender, phone, email, address, district, town, dateJoined, password, authority) VALUES (:Username, :Gender, :Phone, :Email, :Address, :District, :Town, :DateJoined, :Password, :Authority)";
