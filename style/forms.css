@@ -1,0 +1,40 @@
+* {
+    margin : 0px;
+    padding : 0px;
+    
+}
+.wrapper_margin1{
+    margin: 25%, 0px;
+    background-color: skyblue;
+    height: 80%;
+}
+.wrapper_margin2{
+    margin: 0px 20%;
+}
+.inner_wrappper{
+    background-color: #fff;
+    color: black;
+    height: 80%;
+    text-align: center;
+}
+#reg_wrappper .row{
+    display: inline-block;
+    margin: 0;
+    width: 45%;
+}
+
+#reg_wrappper .row>div{
+    width: 45%;
+    height: 25px;
+    margin: 8px 25px 4px 0;
+    display: block;
+}
+#reg_wrappper div input{
+    width: 100px;
+    float: right;
+}
+
+#reg_wrappper div select{
+    width: 132px;
+    float: right;
+}
