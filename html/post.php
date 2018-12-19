@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <link rel='stylesheet' href='../style/style.css'>
 
 <?php 
@@ -19,7 +23,7 @@ if (isset($_GET['post_id'])){
     $user_id = "Jason Test"; // fill with the value in session of the logged user
 }
 // submit the values
-if (isset($_POST['post_title']) AND isset($_POST['item_description']) AND isset($_POST['post_price']) AND isset($_POST['district_town'])) {
+if (isset($_POST['post_title']) AND isset($_POST['item_description']) AND isset($_POST['post_price']) AND isset($_POST['district_town']) AND isset($_POST['post_category'])) {
     
     $newTitle= $_POST['post_title'];
     $newDesc = $_POST['item_description'];
