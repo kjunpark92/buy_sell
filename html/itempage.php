@@ -1,3 +1,8 @@
+<?php
+    session_start();
+?>
+
+
 <link rel='stylesheet' href='../style/style.css'>
 
 <?php 
@@ -57,7 +62,7 @@ $dateComment= $data2['dateComment'];
         </form>';
 
         $comment_text= $_POST['comment'];
-        $user_id= 'Jason Test';
+        $user_id= 'Jason Test'; //has to be changed to session['user_id']
         $username= $data2['username'];//has to be changed to session['username']
        
         if(!empty($comment_text)){
@@ -76,7 +81,10 @@ $dateComment= $data2['dateComment'];
             ));
             
         }
-    
+        else {
+            echo 'Please write something for a comment';
+        }
+    // }  -- for if isset condition-- uncommnet this later
    
     ?>
 </div>
