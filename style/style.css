@@ -76,3 +76,21 @@
     border: 1px solid black;
     text-align: center;
 } */
+
+/* --------------------------------------
+            Item Box
+-------------------------------------- */
+
+.item_wrapper{
+    width : 250px;
+    height: 450px;
+    border: 2px dashed #232323;
+}
+.title_price{
+    border-bottom: 1px solid #fafafa;
+    height: 99px;
+}
+.district_town{
+    border-bottom: 1px solid #fafafa;
+    height:99px;
+}

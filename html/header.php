@@ -17,6 +17,9 @@ $profile = '';
 $login = "";
 $logout = "";
 $registration = "";
+$logo = "<div>
+    <a href="'<?php ./index.php; ?>'"><img src="../img/logo_top.png" alt=""></a>
+<div>"
 if(isset($isIndexPage) AND $isIndexPage) {
     $url = "./html/in_category.php?cat=";
     $index = "index.php";
@@ -24,7 +27,8 @@ if(isset($isIndexPage) AND $isIndexPage) {
     $login = "./html/log_in.php";
     $logout = "./html/log_out.php";
     $registration = "./html/registration.php";
-}else {
+}
+else {
     $url = "in_category.php?cat=";
     $index = "../index.php";
     $profile = "profile.php";
@@ -37,8 +41,8 @@ if(isset($isIndexPage) AND $isIndexPage) {
 <header>
     <div id="navbar">
         <div id="top_logo">
-            <a href="<?php echo $index;?>"><img src="./img/logo_top.png" alt="logo"  width="75px" height="60px"></a><a href="<?php echo $index;?>">
-            <!-- <p><script> vertical-align = "middle"</script></p>HOME</a> -->
+        <?php echo $logo;?>
+            <!-- <p><script> vertical-align = "middle</"script></p>HOME</a> -->
         </div>
         <div class="category">
             <span><a href="<?php echo $url;?>electronics">Electronics</a></span>

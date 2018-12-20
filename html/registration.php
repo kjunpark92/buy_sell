@@ -9,6 +9,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registration</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/forms.css">
 </head>
 <body>
 
@@ -98,46 +99,72 @@ session_start();
         }
     }
     ?>
-    <div>
-        <form action="<?php echo $action; ?>" method="POST">
-            <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
-            <span class="red_star">*</span><label for="username">Username : </label>
-            <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>"><br>
-            <span class="red_star">*</span> Gender :
-            <label for="male"> <input type="radio" name="gender" id="male" value="m" <?php echo ($gender_edit == 'm') ? 'checked="checked"' : ''; ?> >Male </label>
-            <label for="female"> <input type="radio" name="gender" id="female" value="f" <?php echo ($gender_edit == 'f') ? 'checked="checked"' : ''; ?> >Female </label><br>
-            <span class="red_star">*</span><label for="phone"> Phone : </label> 
-            <input type="text" name="phone" id="phone" maxlength="11" value="<?php echo $phone_edit; ?>"><br>
-            <span class="red_star">*</span><label for="email"> Email : </label>
-            <input type="text" name="email" id="email" value="<?php echo $email_edit; ?>"><br>
-            <span class="red_star">*</span><label for="address"> Address : </label>
-            <input type="text" name="address" id="address" value="<?php echo $address_edit; ?>"><br>
-            <span class="red_star">*</span><label for="district_town"> District/Town : </label>
-                <select name="district_town" id="district_town" myOptionToSelect = " <?php echo $district_town;?>">
-                    <optgroup label="Gangnam">
-                        <option value="gangnam-apgujeong" >Apgujeong</option>
-                        <option value="gangnam-sinsa" >Sinsa</option>
-                        <option value="gangnam-samseong" >Samseong</option>
-                    </optgroup>
-                    <optgroup label="Yongsan">
-                        <option value="yongsan-itaewon" >Itaewon</option>
-                        <option value="yongsan-yongmun" >Yongmun</option>
-                        <option value="yongsan-seobinggo" >Seobinggo</option>
-                    </optgroup>
-                    <optgroup label="Mapo">
-                        <option value="mapo-gongdeok" >Gongdeok</option>
-                        <option value="mapo-hapjeong" >Hapjeong</option>
-                        <option value="mapo-sinsu">Sinsu</option>
-                    </optgroup>
-                </select><br>
-            <span class="red_star">*</span><label for="password"> Password : </label>
-            <input type="password" name="password" id="password"><br>
-            <span class="red_star">*</span><label for="confirmation"><?php echo $confirmation; ?> :</label>
-            <input type="password" id="confirmation" name="confirmation"><br>
-            <input id="save" type="submit" value="<?php echo $submitValue; ?>">
-        </form>
-        <div id="error_message"></div>
+<div class="wrapper_margin1">
+    <div class="wrapper_margin">
+        <div class="inner_wrappper">
+            <h2>Registration Information</h2>
+            <form action="<?php echo $action; ?>" method="POST">
+            <div class="reg_wrappper">
+            <div class="row">
+                <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
+                <div>
+                    <span class="red_star">*</span><label for="username">Username : </label>
+                    <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>">
+                </div>
+                <div>
+                <span class="red_star">*</span> Gender :
+                <label for="male"> <input type="radio" name="gender" id="male" value="m" <?php echo ($gender_edit == 'm') ? 'checked="checked"' : ''; ?> >Male </label>
+                <label for="female"> <input type="radio" name="gender" id="female" value="f" <?php echo ($gender_edit == 'f') ? 'checked="checked"' : ''; ?> >Female </label>
+            </div>
+            <div>
+                <span class="red_star">*</span><label for="phone"> Phone : </label> 
+                <input type="text" name="phone" id="phone" maxlength="11" value="<?php echo $phone_edit; ?>"><br>
+            </div>
+            <div class="row">
+                <div>
+                <span class="red_star">*</span><label for="email"> Email : </label>
+                <input type="text" name="email" id="email" value="<?php echo $email_edit; ?>">
+            </div>
+            <div>
+                <span class="red_star">*</span><label for="address"> Address : </label>
+                <input type="text" name="address" id="address" value="<?php echo $address_edit; ?>">
+            </div>
+            <div>
+                <span class="red_star">*</span><label for="district_town"> District/Town : </label>
+                    <select name="district_town" id="district_town" myOptionToSelect = " <?php echo $district_town;?>">
+                        <optgroup label="Gangnam">
+                            <option value="gangnam-apgujeong" >Apgujeong</option>
+                            <option value="gangnam-sinsa" >Sinsa</option>
+                            <option value="gangnam-samseong" >Samseong</option>
+                        </optgroup>
+                        <optgroup label="Yongsan">
+                            <option value="yongsan-itaewon" >Itaewon</option>
+                            <option value="yongsan-yongmun" >Yongmun</option>
+                            <option value="yongsan-seobinggo" >Seobinggo</option>
+                        </optgroup>
+                        <optgroup label="Mapo">
+                            <option value="mapo-gongdeok" >Gongdeok</option>
+                            <option value="mapo-hapjeong" >Hapjeong</option>
+                            <option value="mapo-sinsu">Sinsu</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    <span class="red_star">*</span><label for="password"> Password : </label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div>
+                    <span class="red_star">*</span><label for="confirmation"><?php echo $confirmation; ?> :</label>
+                    <input type="password" id="confirmation" name="confirmation"><br>
+                    <input id="save" type="submit" value="<?php echo $submitValue; ?>">
+                
+                </div>
+            </div>
+            </form>
+            <div id="error_message"></div>
+        </div>
     </div>
+</div>
 <?php include('footer.php');?>
 <script src="../js/script.js"></script>
 <script>
