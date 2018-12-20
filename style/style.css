@@ -6,24 +6,25 @@
             Header/ Nav bar 
 -------------------------------------- */
 #navbar {
-    margin-top: 15px;
+    margin-top: 1px;
     background-color: lightslategray;
     width: 100%;
 }
 
 #navbar div {
-    background-color: coral;
+    background-color: black;
     width: 12%;
     height: 60px;
     display: inline-block;
     flex-direction: row;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     text-align: center;
-    line-height: 80px;
+    line-height: 60px;
+    vertical-align: middle;
 }
 
 #navbar div:hover {
-    background-color: cornflowerblue;
+    background-color: red;
 }
 
 #top_login {

@@ -27,7 +27,6 @@ session_start();
                 $town = $result['town'];
                 include('./html/item_box.php');
             }
-        print_r($_REQUEST['district']);
         include('./html/aside.php');
         include('./html/footer.php');
     ?>

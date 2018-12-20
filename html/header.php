@@ -27,7 +27,7 @@ if(isset($isIndexPage) AND $isIndexPage) {
 }else {
     $url = "in_category.php?cat=";
     $index = "../index.php";
-    $profile = 'profile.php';
+    $profile = "profile.php";
     $login = "log_in.php";
     $logout = "log_out.php";
     $registration = "registration.php";
@@ -37,7 +37,8 @@ if(isset($isIndexPage) AND $isIndexPage) {
 <header>
     <div id="navbar">
         <div id="top_logo">
-            <a href="<?php echo $index;?>"> logo <img src="" alt="" ></a>
+            <a href="<?php echo $index;?>"><img src="./img/logo_top.png" alt="logo"  width="75px" height="60px"></a><a href="<?php echo $index;?>">
+            <!-- <p><script> vertical-align = "middle"</script></p>HOME</a> -->
         </div>
         <div class="category">
             <span><a href="<?php echo $url;?>electronics">Electronics</a></span>
