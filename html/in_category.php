@@ -13,7 +13,7 @@
 include('db.php');
 include('header.php');
 $cat = $_GET['cat'];
-$req = $db->prepare('SELECT id, img, title, price, district, town FROM posts WHERE category = :category');
+$req = $db->prepare('SELECT id, img, title, price, district, townm category FROM posts WHERE category = :category');
         $req->execute(array(
         'category' => $cat));
         while ($result = $req -> fetch()){
@@ -22,7 +22,8 @@ $req = $db->prepare('SELECT id, img, title, price, district, town FROM posts WHE
             $title = $result['title'];
             $price = $result['price'];
             $district = $result['district'];
-            $town = $result['town'];
+            $town = $result['town']
+            $category = $result['category']];
             include('item_box.php');
         }
 ?>
