@@ -25,6 +25,7 @@ session_start();
                 $price = $result['price'];
                 $district = $result['district'];
                 $town = $result['town'];
+                $category = $result['category'];
                 include('./html/item_box.php');
             }
         include('./html/aside.php');

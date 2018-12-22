@@ -10,21 +10,34 @@
 <body>
 <div id="category">
 <?php 
-include('db.php');
-include('header.php');
-$cat = $_POST['cat'];
-$req = $db->prepare('SELECT id, img, title, price, district, townm, category FROM posts WHERE category = :category);
-        $req->execute(array());
-        while ($result = $req -> fetch()){
-            $id = $result['id'];
-            $img = $result['img'];
-            $title = $result['title'];
-            $price = $result['price'];
-            $district = $result['district'];
-            $town = $result['town']
-            $category = $result['category']];
-            include('item_box.php');
-        }
+    include('db.php');
+    include('header.php');
+
+    if (isset($_GET['cat'])) {
+        $cat = $_GET['cat'];
+        $category = " ";
+        $myArray = array(
+        'category' => $cat
+        );
+    }
+    else {
+        $cat = "";
+        $category = "";
+        $myArray = array();
+    }
+
+    $req = $db->prepare("SELECT id, img, title, price, district, town, category FROM posts WHERE category = :category");
+    $req->execute($myArray);
+    while ($result = $req -> fetch()) {
+        $id = $result['id'];
+        $img = $result['img'];
+        $title = $result['title'];
+        $price = $result['price'];
+        $district = $result['district'];
+        $town = $result['town'];
+        $category = $result['category'];
+        include('item_box.php');
+    }
 ?>
 </div>
 <?php include('footer.php');?>
