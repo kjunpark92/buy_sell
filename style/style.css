@@ -12,7 +12,7 @@
 }
 
 #navbar div {
-    background-color: black;
+    background-color: DimGrey;
     width: 12%;
     height: 60px;
     display: inline-block;
@@ -24,7 +24,7 @@
 }
 
 #navbar div:hover {
-    background-color: red;
+    background-color: SlateGray;
 }
 
 #top_login {
@@ -82,15 +82,42 @@
 -------------------------------------- */
 
 .item_wrapper{
-    width : 250px;
-    height: 450px;
-    border: 2px dashed #232323;
+    width : 200px;
+    height: 300px;
+    border: 2px dashed #797878;
 }
 .title_price{
     border-bottom: 1px solid #fafafa;
-    height: 99px;
+    height: 15px;
 }
 .district_town{
     border-bottom: 1px solid #fafafa;
-    height:99px;
+    height: 15px;
+}
+
+
+/* --------------------------------------
+            Links
+-------------------------------------- */
+
+
+a:link {
+  color: darkblue  ;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: MidnightBlue;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+    color: navy;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+  color: navy;
+  background-color: transparent;
+  text-decoration: none;
 }

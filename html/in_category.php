@@ -12,10 +12,9 @@
 <?php 
 include('db.php');
 include('header.php');
-$cat = $_GET['cat'];
-$req = $db->prepare('SELECT id, img, title, price, district, townm category FROM posts WHERE category = :category');
-        $req->execute(array(
-        'category' => $cat));
+$cat = $_POST['cat'];
+$req = $db->prepare('SELECT id, img, title, price, district, townm, category FROM posts WHERE category = :category);
+        $req->execute(array());
         while ($result = $req -> fetch()){
             $id = $result['id'];
             $img = $result['img'];
