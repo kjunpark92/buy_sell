@@ -38,7 +38,7 @@ include('footer.php');
         if($isPasswordCorrect){
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $username;
-            echo $_SESSION['user_id']."<br/>"; echo $_SESSION['username'];
+            
             if (isset($_POST['remember'])){
                 setcookie("username",$username, time()+3600);
                 setcookie("id", $result['id'], time()+3600);
