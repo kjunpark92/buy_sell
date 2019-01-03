@@ -13,6 +13,8 @@
     <?php
     $isIndexPage=true;
         include('./html/db.php');
+        $imagesrc= "./img/logo_top.png";
+        
         include('./html/header.php');
             $counter = 0;
             $req = $db->prepare('SELECT * FROM posts ORDER BY datePosted DESC limit 0,5 ');

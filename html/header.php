@@ -39,7 +39,7 @@ else {
 <header>
     <div id="navbar">
         <div id="top_logo">
-         <a href="<?php echo $index;?>"><img src="../img/logo_top.png" alt="logo"  width="75px" height="60px"></a>
+         <a href="<?php echo $index;?>"><img src=" <?php echo isset($imagesrc) ? $imagesrc : '../img/logo_top.png' ?>" alt="logo"  width="75px" height="60px"></a>
         </div>
         <div class="category">
             <span><a href="<?php echo $url;?>electronics">Electronics</a></span>
