@@ -87,11 +87,11 @@
     border: 2px dashed #797878;
 }
 .title_price{
-    border-bottom: 1px solid #fafafa;
+    border-bottom: 1px solid #333;
     height: 15px;
 }
 .district_town{
-    border-bottom: 1px solid #fafafa;
+    border-bottom: 1px solid #333;
     height: 15px;
 }
 
