@@ -6,24 +6,25 @@
             Header/ Nav bar 
 -------------------------------------- */
 #navbar {
-    margin-top: 15px;
+    margin-top: 1px;
     background-color: lightslategray;
     width: 100%;
 }
 
 #navbar div {
-    background-color: coral;
+    background-color: DimGrey;
     width: 12%;
     height: 60px;
     display: inline-block;
     flex-direction: row;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     text-align: center;
-    line-height: 80px;
+    line-height: 60px;
+    vertical-align: middle;
 }
 
 #navbar div:hover {
-    background-color: cornflowerblue;
+    background-color: SlateGray;
 }
 
 #top_login {
@@ -56,4 +57,67 @@
 
 .red_star{
     color: red;
+}
+
+/* --------------------------------------
+            Category
+-------------------------------------- */
+
+/* #category{
+    width: 100%;
+    display: flex;
+}
+
+#category div{
+    width: 15%;
+    height: 15%;
+    display: inline-block;
+    flex-direction: row;
+    border: 1px solid black;
+    text-align: center;
+} */
+
+/* --------------------------------------
+            Item Box
+-------------------------------------- */
+
+.item_wrapper{
+    width : 200px;
+    height: 300px;
+    border: 2px dashed #797878;
+}
+.title_price{
+    border-bottom: 1px solid #333;
+    height: 15px;
+}
+.district_town{
+    border-bottom: 1px solid #333;
+    height: 15px;
+}
+
+
+/* --------------------------------------
+            Links
+-------------------------------------- */
+
+
+a:link {
+  color: darkblue  ;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: MidnightBlue;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+    color: navy;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+  color: navy;
+  background-color: transparent;
+  text-decoration: none;
 }
