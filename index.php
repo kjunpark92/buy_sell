@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +12,22 @@
 </head>
 <body>
     <?php
+    $isIndexPage=true;
         include('./html/db.php');
         include('./html/header.php');
+            $counter = 0;
+            $req = $db->prepare('SELECT * FROM posts ORDER BY datePosted DESC limit 0,5 ');
+            $req->execute();
+            while ($result = $req -> fetch()){
+                $id = $result['id'];
+                $img = $result['img'];
+                $title = $result['title'];
+                $price = $result['price'];
+                $district = $result['district'];
+                $town = $result['town'];
+                $category = $result['category'];
+                include('./html/item_box.php');
+            }
         include('./html/aside.php');
         include('./html/footer.php');
     ?>
@@ -19,3 +36,4 @@
         </script>
 </body>
 </html>
+
