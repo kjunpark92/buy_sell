@@ -1,7 +1,4 @@
-<?php
-    session_start();
-?>
-
+<?php session_start();?>
 
 <link rel='stylesheet' href='../style/style.css'>
 
@@ -36,7 +33,7 @@
 
 $req2 = $db -> query("SELECT c.* , u.username FROM comments c 
                         JOIN users u ON c.user_id= u.id 
-                        WHERE c.post_id=$post_id
+                        WHERE c.post_id=10 
                         ORDER BY c.dateComment");
 
 $data2= $req2->fetch();
@@ -51,25 +48,26 @@ $dateComment= $data2['dateComment'];
         <?php
         while ($data2 = $req2 -> fetch()){
         echo "<li><span class='comment_username'><strong>".$username."</strong></span><span class='comment_text'>  ".$comment_text."</span><span class='comment_date'>  ".$dateComment."</span></li><br/>";
-    };
-    ?>
+        };
+        ?>
     </ul>
     <?php 
-    // if(isset($_SESSION['id']) AND isset($_SESSION['user_id'])) {
-        echo '<form action="itempage.php?post_id='.$post_id.'" method="POST">
-        <input type="text" name="comment" style=width:300px placeholder="leave your comment here"/>
-        <input type="submit" name="submit" value="Enter">
+    if(isset($_SESSION['user_id']) AND isset($_SESSION['user_id'])) {
+        echo '<form action="itempage.php?post_id='.$post_id.'" method="POST" id="comment_form">
+        <input type="text" name="comment" id="comment_text" style=width:300px placeholder="leave your comment here"/>
+        <input type="submit" name="submit" id="comment_submit" value="Enter">
         </form>';
 
-        $comment_text= $_POST['comment'];
-        $user_id= 'Jason Test'; //has to be changed to session['user_id']
-        $username= $data2['username'];//has to be changed to session['username']
-       
-        if(!empty($comment_text)){
-            
+        $comment_text= "";
+        $user_id= $_SESSION['user_id']; 
+        $username= $_SESSION['username'];
+
+        if($comment_text !== ""){
+            $comment_text= $_POST['comment'];
             date_default_timezone_set('Asia/Seoul');
             $now = new DateTime();
             $now_format= date_format($now, 'Y-m-d H:i:s');
+            
        
             $req3 = $db->prepare("INSERT INTO comments(comment_text, dateComment, user_id, post_id) VALUES (:comment, :timestamp, :user_id, :post_id)");
           
@@ -81,19 +79,34 @@ $dateComment= $data2['dateComment'];
             ));
             
         }
-        else {
-            echo 'Please write something for a comment';
-        }
-    // }  -- for if isset condition-- uncommnet this later
+        // else {
+        //     echo 'Please write something for a comment';
+        // }
+    }  
+    //-- for if isset condition-- uncomment this later
    
     ?>
 </div>
 
-<?php
+<!-- <script src="../js/script.js">
+</script> -->
+<script> 
+var comment_submit = document.getElementById("comment_submit");
 
-?>
+comment_submit.addEventListener('click',function(e){
 
+    var comment_text = document.getElementById("comment_text");
+  
+    comment_text.style.background = 'none';
 
+    if (comment_text.value === ""){
+        
+        alert('Please write something for comment');
+        comment_text.style.background= 'pink';
+        comment_text.focus();
 
-<script src="../js/script.js">
+        e.preventDefault();
+    }
+    
+});
 </script>

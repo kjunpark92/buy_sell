@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,11 +37,14 @@ include('footer.php');
         if($isPasswordCorrect){
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $username;
+            
             if (isset($_POST['remember'])){
                 setcookie("username",$username, time()+3600);
                 setcookie("id", $result['id'], time()+3600);
             }
-            header ('location: ../index.php');
+            
+            // header ('location: ../index.php');
+            header ('location: ./itempage.php?post_id=10');
         }
         else {
             echo "Your user name or password is wrong!";
