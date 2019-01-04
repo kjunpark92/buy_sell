@@ -64,7 +64,6 @@ $req2 = $db -> query("SELECT c.* , u.username FROM comments c
             $now = new DateTime();
             $now_format= date_format($now, 'Y-m-d H:i:s');
             
-       
             $req3 = $db->prepare("INSERT INTO comments(comment_text, dateComment, user_id, post_id) VALUES (:comment, :timestamp, :user_id, :post_id)");
           
             $req3 -> execute(array(
@@ -72,14 +71,10 @@ $req2 = $db -> query("SELECT c.* , u.username FROM comments c
                 'timestamp'=> $now_format, 
                 'user_id'=> $user_id, 
                 'post_id'=>$post_id
-            ));
-            
-        }
-        // else {
-        //     echo 'Please write something for a comment';
-        // }
+            ));     
+        }     
     }  
-    //-- for if isset condition-- uncomment this later
+    
    
     ?>
 </div>
