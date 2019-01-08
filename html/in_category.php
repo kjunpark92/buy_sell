@@ -26,7 +26,7 @@
         $myArray = array();
     }
 
-    $req = $db->prepare("SELECT id, img, title, price, district, town, category FROM posts WHERE category = :category");
+    $req = $db->prepare("SELECT id, img, title, price, district, town, category FROM posts WHERE category = :category  ORDER BY datePosted DESC");
     $req->execute($myArray);
     while ($result = $req -> fetch()) {
         $id = $result['id'];

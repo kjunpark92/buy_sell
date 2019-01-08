@@ -6,14 +6,14 @@
             Header/ Nav bar 
 -------------------------------------- */
 #navbar {
-    margin-top: 1px;
+    /* margin-top: 1px; */
     background-color: lightslategray;
     width: 100%;
 }
 
 #navbar div {
     background-color: DimGrey;
-    width: 12%;
+    width: 12.073%;
     height: 60px;
     display: inline-block;
     flex-direction: row;
@@ -24,7 +24,18 @@
 }
 
 #navbar div:hover {
-    background-color: SlateGray;
+    background-color: lightgrey;
+}
+
+#navbar a {
+    padding: 20px 46.4px;
+    display: block;
+    line-height: 22px;
+    width: 74px;
+}
+
+#navbar a#logo{
+    display: inline;
 }
 
 #top_login {

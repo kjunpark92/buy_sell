@@ -109,7 +109,7 @@ session_start();
                 <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
                 <div>
                     <span class="red_star">*</span><label for="username">Username : </label>
-                    <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>">
+                    <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>"  maxlength="11">
                 </div>
                 <div>
                 <span class="red_star">*</span> Gender :
@@ -133,29 +133,29 @@ session_start();
                 <span class="red_star">*</span><label for="district_town"> District/Town : </label>
                     <select name="district_town" id="district_town" myOptionToSelect = " <?php echo $district_town;?>">
                         <optgroup label="Gangnam">
-                            <option value="gangnam-apgujeong" >Apgujeong</option>
-                            <option value="gangnam-sinsa" >Sinsa</option>
-                            <option value="gangnam-samseong" >Samseong</option>
+                            <option value="Gangnam-Apgujeong" >Apgujeong</option>
+                            <option value="Gangnam-Sinsa" >Sinsa</option>
+                            <option value="Gangnam-Samseong" >Samseong</option>
                         </optgroup>
                         <optgroup label="Yongsan">
-                            <option value="yongsan-itaewon" >Itaewon</option>
-                            <option value="yongsan-yongmun" >Yongmun</option>
-                            <option value="yongsan-seobinggo" >Seobinggo</option>
+                            <option value="Yongsan-Itaewon" >Itaewon</option>
+                            <option value="Yongsan-Yongmun" >Yongmun</option>
+                            <option value="Yongsan-Seobinggo" >Seobinggo</option>
                         </optgroup>
                         <optgroup label="Mapo">
-                            <option value="mapo-gongdeok" >Gongdeok</option>
-                            <option value="mapo-hapjeong" >Hapjeong</option>
-                            <option value="mapo-sinsu">Sinsu</option>
+                            <option value="Mapo-Gongdeok" >Gongdeok</option>
+                            <option value="Mapo-Hapjeong" >Hapjeong</option>
+                            <option value="Mapo-Sinsu">Sinsu</option>
                         </optgroup>
                     </select>
                 </div>
                 <div>
                     <span class="red_star">*</span><label for="password"> Password : </label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" maxlength="11">
                 </div>
                 <div>
                     <span class="red_star">*</span><label for="confirmation"><?php echo $confirmation; ?> :</label>
-                    <input type="password" id="confirmation" name="confirmation"><br>
+                    <input type="password" id="confirmation" name="confirmation" maxlength="11"><br>
                     <input id="save" type="submit" value="<?php echo $submitValue; ?>">
                 
                 </div>
