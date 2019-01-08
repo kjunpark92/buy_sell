@@ -15,8 +15,8 @@ include('header.php');
 ?>
     <div>
         <form action="log_in.php" method="POST">
-            <label for='username'> Username : </label> <input type='text' name='username' id='username'> <br/>
-            <label for='password'> Password : </label> <input type='password' name='password' id='password'> <br/>
+            <label for='username'> Username : </label> <input type='text' name='username' id='username' maxlength="11"> <br/>
+            <label for='password'> Password : </label> <input type='password' name='password' id='password' maxlength="11"> <br/>
             <label> Remember me : <input type= 'checkbox' name='remember' id='remember' checked > <br/>
             <input type="submit" value="Log In">
         </form>

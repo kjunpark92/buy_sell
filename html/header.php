@@ -39,28 +39,28 @@ else {
 <header>
     <div id="navbar">
         <div id="top_logo">
-         <a href="<?php echo $index;?>"><img src=" <?php echo isset($imagesrc) ? $imagesrc : '../img/logo_top.png' ?>" alt="logo"  width="75px" height="60px"></a>
+         <a href="<?php echo $index;?>" id="logo"><img src=" <?php echo isset($imagesrc) ? $imagesrc : '../img/logo_top.png' ?>" alt="logo"  width="75px" height="60px"></a>
         </div>
         <div class="category">
-            <span><a href="<?php echo $url;?>electronics">Electronics</a></span>
+            <a href="<?php echo $url;?>electronics"><span>Electronics</span></a>
         </div>
         <div class="category">
-            <span><a href="<?php echo $url;?>vehicles">Vehicles</a></span>
+            <a href="<?php echo $url;?>vehicles"><span>Vehicles</span></a>
         </div>
         <div class="category">
-            <span><a href="<?php echo $url;?>cosmetics">Cosmetics</a></span>
+            <a href="<?php echo $url;?>cosmetics"><span>Cosmetics</span></a>
         </div>
         <div class="category">
-            <span><a href="<?php echo $url;?>clothing">Clothing</a></span>
+            <a href="<?php echo $url;?>clothing"><span>Clothing</span></a>
         </div>
         <div class="category">
-            <span><a href="<?php echo $url;?>misc">Misc</a></span>
+            <a href="<?php echo $url;?>misc"><span>Misc</span></a>
         </div>
         <div id="top_login">
-            <span><?php echo (isset($_SESSION['id'])) ? "<a href='".$profile."'>".$username."</a>" : "<a href='".$login."'>Log In</a>"; ?></span>
+            <?php echo (isset($_SESSION['id'])) ? "<a href='".$profile."'><span>".$username."</span></a>" : "<a href='".$login."'><span>Log In</span></a>"; ?>
         </div>
         <div id="top_register">
-            <span><?php echo (isset($_SESSION['id'])) ? "<a href='".$logout."'>Log Out</a>" : "<a href='".$registration."'>New? Register Now</a>";?></span>
+            <?php echo (isset($_SESSION['id'])) ? "<a href='".$logout."'><span>Log Out</span></a>" : "<a href='".$registration."'><span>Register</span></a>";?>
         </div>
 </header>
 
