@@ -2,6 +2,9 @@
     margin: 0px;
     padding: 0px;
 }
+* ul{
+    list-style: none;
+}
 /* --------------------------------------
             Header/ Nav bar 
 -------------------------------------- */
@@ -13,7 +16,7 @@
 
 #navbar div {
     background-color: DimGrey;
-    width: 12%;
+    width: 12.073%;
     height: 60px;
     display: inline-block;
     flex-direction: row;
@@ -27,12 +30,12 @@
     background-color: SlateGray;
 }
 
-#top_login {
+/* #top_login {
     width: 6%;
 }
 #top_register {
     width: 6%;
-}
+} */
 
 /* --------------------------------------
             POST/EDIT 
@@ -120,4 +123,52 @@ a:active {
   color: navy;
   background-color: transparent;
   text-decoration: none;
+}
+
+/* --------------------------------------
+            itempage
+-------------------------------------- */
+
+#itempage_wrapper {
+    width: 70%;
+    border: 1px gray solid;
+    background-color: lightgoldenrodyellow;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 10px 10px 5px 10px;
+}
+
+#comments_wrapper{
+    width: 70%;
+    border: 1px gray solid;
+    background-color: lightblue;
+    margin: 15px 5px 5px 10px;
+    padding: 15px 10px 5px 10px;
+    font-size: 0.85em;
+}
+
+.comment_username{
+    display: inline-block;
+    width: 12%;
+    text-align: center;
+    background-color: lightgray;
+}
+
+.comment_text{
+    padding-left: 15px;
+}
+.comment_date{
+    display:inline-block;
+    text-align: right;
+    margin-left: 5px;
+    padding-left: 3px;
+}
+.each_comment{
+    border-bottom: 0.5px dotted #999;
+    padding-bottom: 5px;
+}
+#comments_list{
+    padding: 5px;
+    margin-left: -3px;
+    border: 0.5px dotted #999;
 }

@@ -43,7 +43,7 @@ $req2 = $db -> query("SELECT c.* , u.username FROM comments c
             $comment_text= $data2['comment_text'];
             $username= $data2['username'];
             $dateComment= $data2['dateComment'];
-        echo "<li><span class='comment_username'><strong>".$username."</strong></span><span class='comment_text'>  ".$comment_text."</span><span class='comment_date'>  ".$dateComment."</span></li><br/>";
+        echo "<li class='each_comment'><span class='comment_username'><strong>".$username."</strong></span><span class='comment_date'> (".$dateComment.")</span><br/> <span class='comment_text'>".$comment_text."</span></li><br/>";
         };
         ?>
     </ul>

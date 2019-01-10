@@ -60,7 +60,7 @@ else {
             <span><?php echo (isset($_SESSION['id'])) ? "<a href='".$profile."'>".$username."</a>" : "<a href='".$login."'>Log In</a>"; ?></span>
         </div>
         <div id="top_register">
-            <span><?php echo (isset($_SESSION['id'])) ? "<a href='".$logout."'>Log Out</a>" : "<a href='".$registration."'>New? Register Now</a>";?></span>
+            <span><?php echo (isset($_SESSION['id'])) ? "<a href='".$logout."'>Log Out</a>" : "<a href='".$registration."'>Register</a>";?></span>
         </div>
 </header>
 

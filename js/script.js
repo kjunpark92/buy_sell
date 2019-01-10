@@ -69,17 +69,4 @@ submit_button.addEventListener("click", function(e){
 //     itempage / comment section
 // --------------------------------------------
 
-console.log('hi');
-var comment_submit = document.getElementById("comment_submit");
 
-
-comment_submit.addEventListener('click',function(){
-    var comment_form = document.getElementById("comment_form");
-    var comment_text = document.getElementById("comment_text");
-    if (comment_text ==""){
-        comment_form.innerHTML = 'Please write something for comment';
-        comment_text.style.backgroundColor= 'red';
-    }
-
-
-});
