@@ -7,13 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Log In</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/forms.css">
 </head>
 <body>
 <?php
 include('db.php');
 include('header.php');
 ?>
-    <div>
+<div class="wrapper_margin1">
+    <div class="inner_wrapper">
+    <h2>Log-In Information</h2><br>
         <form action="log_in.php" method="POST">
             <label for='username'> Username : </label> <input type='text' name='username' id='username' maxlength="11"> <br/>
             <label for='password'> Password : </label> <input type='password' name='password' id='password' maxlength="11"> <br/>
@@ -22,6 +25,7 @@ include('header.php');
         </form>
         <div id="error_message"></div>
     </div>
+</div>
 <?php
 include('footer.php');
 ?>

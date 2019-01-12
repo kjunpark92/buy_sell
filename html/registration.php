@@ -100,18 +100,15 @@ session_start();
     }
     ?>
 <div class="wrapper_margin1">
-    <div class="wrapper_margin">
-        <div class="inner_wrappper">
-            <h2>Registration Information</h2>
-            <form action="<?php echo $action; ?>" method="POST">
-            <div class="reg_wrappper">
-            <div class="row">
-                <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
-                <div>
-                    <span class="red_star">*</span><label for="username">Username : </label>
-                    <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>"  maxlength="11">
-                </div>
-                <div>
+    <div class="inner_wrapper">
+        <h2>Registration Information</h2><br>
+        <form action="<?php echo $action; ?>" method="POST">
+            <input type="hidden" name = "user_id" value="<?php echo $user_id; ?>"/>
+            <div>
+                <span class="red_star">*</span><label for="username"> Username : </label>
+                <input type="text" name="username" id="username" value="<?php echo $username_edit; ?>"  maxlength="11">
+            </div>
+            <div>
                 <span class="red_star">*</span> Gender :
                 <label for="male"> <input type="radio" name="gender" id="male" value="m" <?php echo ($gender_edit == 'm') ? 'checked="checked"' : ''; ?> >Male </label>
                 <label for="female"> <input type="radio" name="gender" id="female" value="f" <?php echo ($gender_edit == 'f') ? 'checked="checked"' : ''; ?> >Female </label>
@@ -120,8 +117,7 @@ session_start();
                 <span class="red_star">*</span><label for="phone"> Phone : </label> 
                 <input type="text" name="phone" id="phone" maxlength="11" value="<?php echo $phone_edit; ?>"><br>
             </div>
-            <div class="row">
-                <div>
+            <div>
                 <span class="red_star">*</span><label for="email"> Email : </label>
                 <input type="text" name="email" id="email" value="<?php echo $email_edit; ?>">
             </div>
@@ -157,15 +153,14 @@ session_start();
                     <span class="red_star">*</span><label for="confirmation"><?php echo $confirmation; ?> :</label>
                     <input type="password" id="confirmation" name="confirmation" maxlength="11"><br>
                     <input id="save" type="submit" value="<?php echo $submitValue; ?>">
-                
                 </div>
-            </div>
-            </form>
-            <div id="error_message"></div>
-        </div>
+        </form>
+        <div id="error_message"></div>
     </div>
 </div>
+<div>
 <?php include('footer.php');?>
+</div>
 <script src="../js/script.js"></script>
 <script>
     // Disiplay errors on the check of the form
@@ -180,7 +175,7 @@ session_start();
         var password = document.querySelector('#password');
         var confirmation = document.querySelector("#confirmation");
         if(username.value == "" || password.value == "" || phone.value == "" || email.value == "" || address.value == ""){
-            error_message.innerHTML = "Please fill out all the fields with * next to it";
+            error_message.innerHTML = "Please fill out all the fields with <span class='red_star'>*</span> next to it";
             e.preventDefault();
             }
         if ((password.value || confirmation.value) && (password.value != confirmation.value)) {

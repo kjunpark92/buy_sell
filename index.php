@@ -14,10 +14,12 @@
     $isIndexPage=true;
         include('./html/db.php');
         $imagesrc= "./img/logo_top.png";
-        
-        include('./html/header.php');
+        include('./html/header.php'); 
+        ?>
+        <div class="item_wrap_index">
+            <?php
             $counter = 0;
-            $req = $db->prepare('SELECT * FROM posts ORDER BY datePosted DESC limit 0,5 ');
+            $req = $db->prepare('SELECT * FROM posts ORDER BY datePosted DESC limit 0,6 ');
             $req->execute();
             while ($result = $req -> fetch()){
                 $id = $result['id'];
@@ -28,13 +30,17 @@
                 $town = $result['town'];
                 $category = $result['category'];
                 include('./html/item_box.php');
-            }
+            } 
+            ?>
+        </div>
+        <?php
         include('./html/aside.php');
-        include('./html/footer.php');
-    ?>
-
-    <script src="./js/script.js">
-        </script>
+        ?>
+        <div id="footer_wrapper">
+        <?php
+        include('./html/footer.php');?>
+        </div>
+    <script src="./js/script.js"></script>
 </body>
 </html>
 

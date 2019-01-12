@@ -1,40 +1,41 @@
-/* * {
+* {
     margin : 0px;
     padding : 0px;
     
 }
 .wrapper_margin1{
-    margin: 25%, 0px;
-    background-color: skyblue;
+    color: #333;
+    margin: 0px 0px;
+    background-color: rgba(135, 207, 235, 0.568);
     height: 80%;
+    padding: 3% 0;
 }
-.wrapper_margin2{
-    margin: 0px 20%;
-}
-.inner_wrappper{
+.inner_wrapper{
     background-color: #fff;
-    color: black;
     height: 80%;
     text-align: center;
+    margin: 0px 24.8%;
+    border-radius: 25px;
+    width: 50%;
 }
-#reg_wrappper .row{
+/* #reg_wrapper {
     display: inline-block;
     margin: 0;
     width: 45%;
 }
 
-#reg_wrappper .row>div{
+#reg_wrapper div{
     width: 45%;
     height: 25px;
     margin: 8px 25px 4px 0;
     display: block;
 }
-#reg_wrappper div input{
+#reg_wrapper div input{
     width: 100px;
     float: right;
 }
 
-#reg_wrappper div select{
+#reg_wrapper div select{
     width: 132px;
     float: right;
 } */

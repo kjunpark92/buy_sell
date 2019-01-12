@@ -63,6 +63,3 @@ else {
             <?php echo (isset($_SESSION['id'])) ? "<a href='".$logout."'><span>Log Out</span></a>" : "<a href='".$registration."'><span>Register</span></a>";?>
         </div>
 </header>
-
-
- <!-- $logo = '<a href="<?php // echo $index;?>"><img src="./img/logo_top.png" alt="logo"  width="75px" height="60px"></a>' -->

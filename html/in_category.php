@@ -25,7 +25,9 @@
         $category = "";
         $myArray = array();
     }
-
+    ?>
+    <div class="item_wrap_cat">
+        <?php
     $req = $db->prepare("SELECT id, img, title, price, district, town, category FROM posts WHERE category = :category  ORDER BY datePosted DESC");
     $req->execute($myArray);
     while ($result = $req -> fetch()) {
@@ -39,6 +41,7 @@
         include('item_box.php');
     }
 ?>
+</div>
 </div>
 <?php include('footer.php');?>
 </body>
